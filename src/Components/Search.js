@@ -1,5 +1,8 @@
 export const Search = (props) => {
     // const getLocation = {};
+    const style = {
+          cursor:'pointer'
+        };
     return (
         <>
              <div className="row mt-5">
@@ -19,7 +22,7 @@ export const Search = (props) => {
                         </div>
                         <div className="col-12 col-md-3">
                             <div className="form-group">
-                                <label className="form-label" htmlFor="getlocation"><i className="fa-solid fa-location-crosshairs" name="getlocation" onClick={props.getLocation}></i> Get Cordinate</label>
+                                <label className="form-label" htmlFor="getlocation"><i className="fa-solid fa-location-crosshairs" style={style} name="getlocation" onClick={props.getLocation}></i> Get Cordinate</label>
                                 <div className="input-group">
                                     <span className="input-group-text" htmlFor="lat">Lat:</span>
                                     <input type="text" className="form-control" onChange={props.change} name="lat" id="lat" placeholder="Enter Latitude here!" value={props.lat}></input>
