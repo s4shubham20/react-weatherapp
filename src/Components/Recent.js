@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function Recent (props) {
     let data = '';
-    // console.log(props.recent)
     if(props.recent != null){
         data = props.recent.map((recent, id) => {
             return <li key={id}  onClick={()=> props.research(recent.lat, recent.lon)} className='btn btn-dark my-1'>{recent.city}</li>

@@ -12,7 +12,7 @@ class Weather extends Component{
             city:   "",
             weatherData:    null,
             isSearch: false,
-            recent: []
+            recent: [],
         }
 
         this.changeHandler  = this.changeHandler.bind(this);
@@ -35,14 +35,19 @@ class Weather extends Component{
 
     addToRecent = () => {
         let recent = this.state.recent;
-        recent.push({
-            lat: this.state.lat,
-            lon: this.state.lon,
-            city: this.state.city,
-        })
-        this.setState({recent}, () => {
-            localStorage.setItem('recent', JSON.stringify(recent));
-        });
+        const exists = recent.some(item => 
+            item.city === this.state.city
+            );
+        if (!exists) {
+            recent.push({
+                lat: this.state.lat,
+                lon: this.state.lon,
+                city: this.state.city,
+            });
+            this.setState({recent}, () => {
+                localStorage.setItem('recent', JSON.stringify(recent));
+            });
+        }
     }
 
     componentDidMount = () => {
