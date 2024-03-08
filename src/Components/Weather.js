@@ -21,13 +21,13 @@ class Weather extends Component{
     changeHandler(evt) {
         const target = evt.target;
         // console.log(target);
-        if(target.name == 'city'){
+        if(target.name === 'city'){
             this.setState({city:target.value});
         }
-        else if(target.name == 'lat'){
+        else if(target.name === 'lat'){
             this.setState({lat:target.value});
         }
-        else if(target.name == 'lon'){
+        else if(target.name === 'lon'){
             this.setState({lon:target.value});
 
         }

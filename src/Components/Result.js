@@ -2,13 +2,13 @@ import Loader from "./Loader";
 
 export const Result = (props) => {
     const { weatherData:data } = props;
-    if(data == null && props.search !== false){
+    if(data === null && props.search !== false){
         return(
             <div className="d-flex justify-content-center mt-5">
                 <Loader/>    
             </div>
         )
-    }else if(data == null && props.search == false) {
+    }else if(data === null && props.search === false) {
         return (
             <div className="d-flex justify-content-center">
                 <h1>Please search !</h1>

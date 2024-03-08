@@ -2,8 +2,8 @@ import Weather  from './Weather';
 const Home = () => {
     return(
         <>
-            <div>
-                <div>Hello Developers!</div>
+            <div className='d-flex justify-content-center align-items-center' style={{ minHeight: '500px' }}>
+                <h1>Hello Developers!</h1>
             </div>
         </>
     );
