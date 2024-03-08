@@ -44,7 +44,7 @@ class Weather extends Component{
                 lon: this.state.lon,
                 city: this.state.city,
             });
-            this.setState({recent}, () => {
+            this.setState({recent, isSearch:true}, () => {
                 localStorage.setItem('recent', JSON.stringify(recent));
             });
         }
