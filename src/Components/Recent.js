@@ -5,7 +5,7 @@ export default function Recent (props) {
     // console.log(props.recent)
     if(props.recent != null){
         data = props.recent.map((recent, id) => {
-            return <li key={id} className='list-group-item'>{recent.city}</li>
+            return <li key={id}  onClick={()=> props.research(recent.lat, recent.lon)} className='btn btn-dark my-1'>{recent.city}</li>
         })
     }
   return (
@@ -13,7 +13,7 @@ export default function Recent (props) {
         <div className='card-header'>
             <h5>Recent Search</h5>
         </div>
-        <ul className="list-group">
+        <ul className="list-group px-1">
             {data}
         </ul>
     </div>

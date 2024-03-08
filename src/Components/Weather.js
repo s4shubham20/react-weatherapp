@@ -40,7 +40,32 @@ class Weather extends Component{
             lon: this.state.lon,
             city: this.state.city,
         })
+        this.setState({recent}, () => {
+            localStorage.setItem('recent', JSON.stringify(recent));
+        });
+    }
+
+    componentDidMount = () => {
+        const data = localStorage.getItem('recent');
+        let recent = data == null ? [] : JSON.parse(data);
         this.setState({recent});
+    }
+
+    researchHandler = (lat , lon) => {
+        this.state.weatherData = null;
+        this.setState({lat, lon}, () => {
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.lon}&appid=c2d8ce13ed63271a0eb900ee5d704516`)
+            .then((res) => {
+                setTimeout(() => {
+                    this.setState({
+                        city:res.data.name,
+                        weatherData:res.data,
+                    });
+                }, 500)
+            }).catch((error) => {
+                console.log(error);
+            })
+        })
     }
 
     searchHandler = (evt) => {
@@ -107,7 +132,7 @@ class Weather extends Component{
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-2 mt-5 pe-0">
-                        <Recent recent={this.state.recent}/>
+                        <Recent research={this.researchHandler} recent={this.state.recent}/>
                     </div>
                     <div className="col-10 pe-0">
                     <Search 
